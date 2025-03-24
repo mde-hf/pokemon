@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 
 
-function SearchBar({ pokemonName, setPokemonName, handleSearch }) {
+function SearchBar({ pokemonName, setPokemonName, handleSearch, getRandomPokemon }) {
 
     return (
         <div className="flex gap-2 items-center justify-center p-4">
@@ -25,8 +25,14 @@ function SearchBar({ pokemonName, setPokemonName, handleSearch }) {
                 onClick={handleSearch}
                 disabled={!pokemonName.trim()}
             >
-
                 Search
+            </button>
+
+            <button
+                onClick={getRandomPokemon}
+
+            >
+                🎲 Surprise Me!
             </button>
 
         </div >

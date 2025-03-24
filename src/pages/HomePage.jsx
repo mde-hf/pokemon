@@ -3,6 +3,7 @@ import getPokemon from "../api/pokemonApi";
 import { useState } from "react";
 import React from "react";
 import PokemonCard from "../components/PokemonCard";
+import { data } from "autoprefixer";
 
 
 
@@ -34,11 +35,32 @@ function HomePage() {
         }
     }
 
+    const getRandomPokemon = async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+
+            const randomID = Math.floor(Math.random() * 1017) + 1;
+            const data = await getPokemon(randomID)
+            setPokemonData(data);
+            setPokemonName('');
+
+        } catch (error) {
+            setError("Couldn't load random Pokémon.");
+            setPokemonData(null);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+
+
     return (
         <div>
             < SearchBar pokemonName={pokemonName}
                 setPokemonName={setPokemonName}
-                handleSearch={handleSearch} />
+                handleSearch={handleSearch}
+                getRandomPokemon={getRandomPokemon} />
             <PokemonCard data={pokemonData} />
         </div>
 
