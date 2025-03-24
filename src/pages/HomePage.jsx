@@ -8,7 +8,7 @@ import PokemonCard from "../components/PokemonCard";
 
 
 function HomePage() {
-    const [pokemonName, setPokemonName] = useState(" "); // stores the search term from the search bar
+    const [pokemonName, setPokemonName] = useState(""); // stores the search term from the search bar
     const [pokemonData, setPokemonData] = useState(null); // Stores Pokemon data
     const [error, setError] = useState(null); // to store errors if pokemon is not found
     const [isLoading, setIsLoading] = useState(false); // Shows loading state

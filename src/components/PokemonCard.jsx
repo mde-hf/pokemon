@@ -5,14 +5,14 @@ function PokemonCard({ data }) {
 
     if (!data) {
         return (
-            <div className="text-center text-gray-500 mt-4">
-                No Pokémon selected.
+            <div className="text-center text-gray-500 mt-9">
+                No Pokémon picked.
             </div>
         );
     }
 
     return (
-        <div className="border p-4 rounded-lg shadow-md max-w-xs mx-auto mt-4 text-center bg-white">
+        <div className="border p-4 rounded-lg shadow-md max-w-xs mx-auto mt-4 text-center bg-grey">
             <h2 className="text-xl font-bold capitalize mb-2">{data.name}</h2>
 
             <img
