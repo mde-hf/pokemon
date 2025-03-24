@@ -13,13 +13,20 @@ function SearchBar({ pokemonName, setPokemonName, handleSearch }) {
                 placeholder="Search Pokémon..."
                 value={pokemonName}
                 onChange={(e) => setPokemonName(e.target.value)}
+                onKeyDown={(e) => {       // code to start the serach on pressing Enter key
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                }}
                 className="border p-2 rounded w-60 border-red-500"
 
             />
             <button
                 onClick={handleSearch}
+                disabled={!pokemonName.trim()}
             >
-                Search Pokemon
+
+                Search
             </button>
 
         </div >
