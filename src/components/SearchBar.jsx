@@ -1,10 +1,10 @@
 
+import React from "react";
 
 import { useState } from "react";
 
 
-function SearchBar() {
-    const [pokemonName, setPokemonName] = useState(" ")
+function SearchBar({ pokemonName, setPokemonName, handleSearch }) {
 
     return (
         <div className="flex gap-2 items-center justify-center p-4">
@@ -13,15 +13,19 @@ function SearchBar() {
                 placeholder="Search Pokémon..."
                 value={pokemonName}
                 onChange={(e) => setPokemonName(e.target.value)}
-                className="border p-2 rounded w-60 border-purple-500"
+                className="border p-2 rounded w-60 border-red-500"
+
             />
-            <button className="bg-blue-500 text-white p-2 rounded"
-                onClick={() => console.log(pokemonName)}
+            <button
+                onClick={handleSearch}
             >
-                Search
+                Search Pokemon
             </button>
+
         </div >
+
     )
+
 
 }
 
