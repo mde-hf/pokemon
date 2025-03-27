@@ -6,8 +6,6 @@ import PokemonCard from "../components/PokemonCard";
 import { data } from "autoprefixer";
 
 
-
-
 function HomePage() {
     const [pokemonName, setPokemonName] = useState(""); // stores the search term from the search bar
     const [pokemonData, setPokemonData] = useState(null); // Stores Pokemon data
@@ -56,15 +54,25 @@ function HomePage() {
 
 
     return (
-        <div>
-            < SearchBar pokemonName={pokemonName}
+        <div className="min-h-screen flex flex-col">
+            {/* Top Half: Background Image */}
+            <div
+                className="h-[50vh] w-[120vh] bg-cover bg-center"
+                style={{ backgroundImage: "url('/background.png')" }}
+            ></div>
+            <SearchBar
+                pokemonName={pokemonName}
                 setPokemonName={setPokemonName}
                 handleSearch={handleSearch}
-                getRandomPokemon={getRandomPokemon} />
+                getRandomPokemon={getRandomPokemon}
+            />
+            {isLoading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
             <PokemonCard data={pokemonData} />
         </div>
 
-    )
+    );
+
 }
 
 
