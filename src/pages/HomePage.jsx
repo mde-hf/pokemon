@@ -4,6 +4,7 @@ import { useState } from "react";
 import React from "react";
 import PokemonCard from "../components/PokemonCard";
 import { data } from "autoprefixer";
+import { Link } from "react-router-dom";
 
 
 function HomePage() {
@@ -54,22 +55,36 @@ function HomePage() {
 
 
     return (
-        <div className="min-h-screen flex flex-col">
-            {/* Top Half: Background Image */}
-            <div
-                className="h-[50vh] w-[120vh] bg-cover bg-center"
-                style={{ backgroundImage: "url('/background.png')" }}
-            ></div>
-            <SearchBar
-                pokemonName={pokemonName}
-                setPokemonName={setPokemonName}
-                handleSearch={handleSearch}
-                getRandomPokemon={getRandomPokemon}
-            />
-            {isLoading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
-            <PokemonCard data={pokemonData} />
+        <div>
+            {/* 🔝 Navbar */}
+            <div className="text-white px-6 py-4 flex justify-between items-center shadow-md rounded-b-xl">
+                <div className="space-x-4">
+                    <Link to="/" className="hover:underline">Home</Link>
+                    <Link to="/battle" className="hover:underline">Battle</Link>
+                </div>
+            </div>
+
+            <div className="min-h-screen flex flex-col">
+
+                {/* Top Half: Background Image */}
+                <div
+                    className="h-[50vh] w-[120vh] bg-cover bg-center"
+                    style={{ backgroundImage: "url('/background.png')" }}
+                ></div>
+                <SearchBar
+                    pokemonName={pokemonName}
+                    setPokemonName={setPokemonName}
+                    handleSearch={handleSearch}
+                    getRandomPokemon={getRandomPokemon}
+                />
+                {isLoading && <p>Loading...</p>}
+                {error && <p>{error}</p>}
+                <PokemonCard data={pokemonData} />
+
+            </div>
         </div>
+
+
 
     );
 

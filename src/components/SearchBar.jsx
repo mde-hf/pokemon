@@ -30,7 +30,6 @@ function SearchBar({ pokemonName, setPokemonName, handleSearch, getRandomPokemon
 
             <button
                 onClick={getRandomPokemon}
-
             >
                 🎲 Surprise Me!
             </button>
