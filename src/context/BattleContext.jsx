@@ -15,7 +15,7 @@ function BattleProvider({ children }) {
         if (!pokemon1 || !pokemon2) return;
 
         const totalStats1 = pokemon1.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
-        const totalStats2 = pokemon1.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
+        const totalStats2 = pokemon2.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
 
         if (totalStats1 > totalStats2) {
             setBattleResult(`${pokemon1.name} wins!`);
@@ -24,6 +24,10 @@ function BattleProvider({ children }) {
         } else {
             setBattleResult("It's a draw!");
         }
+        console.log("P1 total:", totalStats1);
+        console.log("P2 total:", totalStats2);
+        console.log("P1:", pokemon1?.name);
+        console.log("P2:", pokemon2?.name);
     };
 
     return (
