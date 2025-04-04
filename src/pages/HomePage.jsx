@@ -4,7 +4,7 @@ import { useState } from "react";
 import React from "react";
 import PokemonCard from "../components/PokemonCard";
 import { data } from "autoprefixer";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 
 function HomePage() {
@@ -55,15 +55,9 @@ function HomePage() {
 
 
     return (
+
         <div>
-            {/* 🔝 Navbar */}
-            <div className="text-white px-6 py-4 flex justify-between items-center shadow-md rounded-b-xl">
-                <div className="space-x-4">
-                    <Link to="/" className="hover:underline">Home</Link>
-                    <Link to="/battle" className="hover:underline">Battle</Link>
-                    <Link to="/about" className="hover:underline">About</Link>
-                </div>
-            </div>
+            <Header />
 
             <div className="min-h-screen flex flex-col">
 
@@ -84,6 +78,7 @@ function HomePage() {
 
             </div>
         </div>
+
 
 
 
