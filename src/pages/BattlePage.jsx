@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { BattleContext } from "../context/BattleContext";
 import getPokemon from "../api/pokemonApi";
 import PokemonDropdown from "../components/PokemonDropdown";
+import PokemonCard from "../components/PokemonCard";
 
 
 
@@ -37,6 +38,7 @@ function BattlePage() {
                         const data = await getPokemon(name);
                         setPokemon1(data)
                     }} />
+                    <PokemonCard data={pokemon1} />
                 </div>
 
                 {/* Player 2 */}
@@ -46,7 +48,7 @@ function BattlePage() {
                         const data = await getPokemon(name);
                         setPokemon2(data)
                     }} />
-
+                    <PokemonCard data={pokemon2} />
                 </div>
 
             </div>
