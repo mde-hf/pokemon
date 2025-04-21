@@ -1,9 +1,9 @@
 import SearchBar from "../components/SearchBar";
 import getPokemon from "../api/pokemonApi";
 import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import PokemonCard from "../components/PokemonCard";
-import { data } from "autoprefixer";
 import Header from "../components/Header";
 
 

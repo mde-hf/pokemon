@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BattleContext, BattleProvider } from "../context/BattleContext";
 import getPokemon from "../api/pokemonApi";
 import PokemonDropdown from "../components/PokemonDropdown";
@@ -15,16 +16,16 @@ function BattlePage() {
         battleResult,
         simulateBattle } = useContext(BattleContext);
 
-    useEffect(() => {
-        const load = async () => {
-            const p1 = await getPokemon("pikachu");
-            const p2 = await getPokemon("ditto");
-            setPokemon1(p1);
-            setPokemon2(p2);
-        };
+    // useEffect(() => {
+    //     const load = async () => {
+    //         const p1 = await getPokemon(pokemon1);
+    //         const p2 = await getPokemon(pokemon2);
+    //         setPokemon1(p1);
+    //         setPokemon2(p2);
+    //     };
 
-        load();
-    }, []);
+    //     load();
+    // }, []);
 
 
     return (
@@ -32,8 +33,30 @@ function BattlePage() {
         <div>
             <Header />
 
-            <div className="p-6 text-center">
 
+            {/* Player sections */}
+            <div className="flex justify-center gap-8 mt-10">
+                {/* Player 1 */}
+                <div className="w-1/2">
+                    <h2 className="text-xl font-bold whitespace-nowrap">Player 1</h2>
+                    <PokemonDropdown onSelect={async (name) => {
+                        const data = await getPokemon(name);
+                        setPokemon1(data)
+                    }} />
+                </div>
+
+                {/* Player 2 */}
+                <div className="w-1/2">
+                    <h2 className="text-xl font-bold whitespace-nowrap">Player 2</h2>
+                    <PokemonDropdown onSelect={async (name) => {
+                        const data = await getPokemon(name);
+                        setPokemon2(data)
+                    }} />
+
+                </div>
+
+            </div>
+            <div className="p-6 text-center">
                 <button onClick={simulateBattle} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     Start Battle
                 </button>
@@ -42,21 +65,6 @@ function BattlePage() {
                         {battleResult}
                     </p>
                 )}
-
-                {/* Player sections */}
-                <div className="flex justify-center gap-8 mt-10">
-                    {/* Player 1 */}
-                    <div className="w-1/2">
-                        <h2 className="text-xl font-bold whitespace-nowrap">Player 1</h2>
-                        <PokemonDropdown />
-                    </div>
-
-                    {/* Player 2 */}
-                    <div className="w-1/2">
-                        <h2 className="text-xl font-bold whitespace-nowrap">Player 2</h2>
-                        <PokemonDropdown />
-                    </div>
-                </div>
             </div>
 
         </div>
