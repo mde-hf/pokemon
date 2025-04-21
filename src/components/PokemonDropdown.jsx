@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function PokemonDropdown({ onSelect }) {
+function PokemonDropdown({ onSelect, reset }) {
+
+    const [selected, setSelected] = useState("")
+
+    useEffect(() => {
+        if (reset) {
+            setSelected("");
+        }
+    }, [reset]);
 
     return (
-        <select onChange={(e) => onSelect(e.target.value)}>
-            <option value="" disabled selected>Select Pokemon</option>
+        <select value={selected} onChange={(e) => {
+            setSelected(e.target.value);
+            onSelect(e.target.value);
+        }}>
+            <option value="" disabled>Select Pokemon</option>
             <option value="Pikachu">Pikachu</option>
             <option value="Charmander">Charmander</option>
             <option value="Arcanine">Arcanine</option>
         </select>
+
+
 
     )
 }
