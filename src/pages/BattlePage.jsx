@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { BattleContext } from "../context/BattleContext";
 import getPokemon from "../api/pokemonApi";
 import PokemonDropdown from "../components/PokemonDropdown";
-import Header from "../components/Header";
 
 
 
@@ -28,7 +27,6 @@ function BattlePage() {
     return (
 
         <div>
-            <Header />
 
             {/* Player sections */}
             <div className="flex justify-center gap-8 mt-10">

@@ -6,17 +6,22 @@ import BattlePage from './pages/BattlePage';
 import About from './pages/About';
 import { Route, Routes } from 'react-router-dom';
 import { BattleProvider } from './context/BattleContext';
+import MainLayout from "./layout/MainLayout";
+
 
 
 function App() {
   return (
     <BattleProvider>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/battle" element={<BattlePage />} />
-        <Route path="/about" element={<About />} />
+        < Route element={<MainLayout />} >
+          <Route path="/" element={<HomePage />} />
+          <Route path="/battle" element={<BattlePage />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+
       </Routes>
-    </BattleProvider>
+    </BattleProvider >
 
   );
 }

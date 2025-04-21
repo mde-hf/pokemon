@@ -4,7 +4,6 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import PokemonCard from "../components/PokemonCard";
-import Header from "../components/Header";
 
 
 function HomePage() {
@@ -57,7 +56,6 @@ function HomePage() {
     return (
 
         <div>
-            <Header />
 
             <div className="min-h-screen flex flex-col">
 
