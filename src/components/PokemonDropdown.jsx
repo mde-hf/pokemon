@@ -21,6 +21,7 @@ function PokemonDropdown({ onSelect, reset }) {
         axios
             .get("https://pokeapi.co/api/v2/pokemon?limit=1000")
             .then((response) => response.data.results.map((pokemon) => pokemon.name))
+            .then((data) => data.map((uppercase) => uppercase.toUpperCase()))
             .then((data) => {
                 setPokemonOptions(data);
 
@@ -31,11 +32,6 @@ function PokemonDropdown({ onSelect, reset }) {
                 setRandomOptions(randomTen);
             });
     }, []);
-
-    useEffect(() => {
-        console.log(pokemonOptions);
-    }, [pokemonOptions]);
-
 
 
     return (
