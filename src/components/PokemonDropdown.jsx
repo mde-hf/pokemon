@@ -1,14 +1,42 @@
 import React, { useState, useEffect } from "react";
+import getPokemon from "../api/pokemonApi";
+import axios from "axios";
+import { data } from "autoprefixer";
 
 function PokemonDropdown({ onSelect, reset }) {
 
     const [selected, setSelected] = useState("")
+    const [pokemonOptions, setPokemonOptions] = useState([])
+    const [randomOptions, setRandomOptions] = useState([])
 
+    //To reset the dropdown
     useEffect(() => {
         if (reset) {
             setSelected("");
         }
     }, [reset]);
+
+    //To get the list of pokemon names for dropwdown 
+    useEffect(() => {
+        axios
+            .get("https://pokeapi.co/api/v2/pokemon?limit=1000")
+            .then((response) => response.data.results.map((pokemon) => pokemon.name))
+            .then((data) => {
+                setPokemonOptions(data);
+
+                const randomTen = data
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 10);
+
+                setRandomOptions(randomTen);
+            });
+    }, []);
+
+    useEffect(() => {
+        console.log(pokemonOptions);
+    }, [pokemonOptions]);
+
+
 
     return (
         <select value={selected} onChange={(e) => {
@@ -16,9 +44,12 @@ function PokemonDropdown({ onSelect, reset }) {
             onSelect(e.target.value);
         }}>
             <option value="" disabled>Select Pokemon</option>
-            <option value="Pikachu">Pikachu</option>
-            <option value="Charmander">Charmander</option>
-            <option value="Arcanine">Arcanine</option>
+
+            {randomOptions.map((name) => (
+                <option key={name} value={name}>
+                    {name}
+                </option>
+            ))}
         </select>
 
 
