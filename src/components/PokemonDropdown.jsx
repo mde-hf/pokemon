@@ -17,8 +17,9 @@ function PokemonDropdown({ onSelect, reset }) {
 
     //To get the list of pokemon names for dropwdown 
     useEffect(() => {
+
         axios
-            .get("https://pokeapi.co/api/v2/pokemon?limit=1000")
+            .get("https://pokeapi.co/api/v2/pokemon?limit=500")
             .then((response) => response.data.results.map((pokemon) => pokemon.name))
             .then((data) => data.map((uppercase) => uppercase.toUpperCase()))
             .then((data) => {
