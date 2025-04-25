@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import getPokemon from "../api/pokemonApi";
 import axios from "axios";
 import { data } from "autoprefixer";
 
 function PokemonDropdown({ onSelect, reset }) {
 
     const [selected, setSelected] = useState("")
-    const [pokemonOptions, setPokemonOptions] = useState([])
+    // const [pokemonOptions, setPokemonOptions] = useState([])
     const [randomOptions, setRandomOptions] = useState([])
 
     //To reset the dropdown
@@ -23,7 +22,6 @@ function PokemonDropdown({ onSelect, reset }) {
             .then((response) => response.data.results.map((pokemon) => pokemon.name))
             .then((data) => data.map((uppercase) => uppercase.toUpperCase()))
             .then((data) => {
-                setPokemonOptions(data);
 
                 const randomTen = data
                     .sort(() => 0.5 - Math.random())
