@@ -24,13 +24,7 @@ function BattleProvider({ children }) {
         } else {
             setBattleResult("It's a draw!");
         }
-
-
-        console.log("P1 total:", totalStats1);
-        console.log("P2 total:", totalStats2);
-        console.log("P1:", pokemon1?.name);
-        console.log("P2:", pokemon2?.name);
-    };
+    }
 
     return (
 
