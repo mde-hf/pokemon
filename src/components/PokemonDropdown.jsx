@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import { data } from "autoprefixer";
 
 function PokemonDropdown({ onSelect, reset }) {
 
     const [selected, setSelected] = useState("")
-    // const [pokemonOptions, setPokemonOptions] = useState([])
     const [randomOptions, setRandomOptions] = useState([])
 
     //To reset the dropdown
@@ -20,8 +20,7 @@ function PokemonDropdown({ onSelect, reset }) {
 
         axios
             .get("https://pokeapi.co/api/v2/pokemon?limit=500")
-            .then((response) => response.data.results.map((pokemon) => pokemon.name))
-            .then((data) => data.map((uppercase) => uppercase.toUpperCase()))
+            .then((response) => response.data.results.map((pokemon) => pokemon.name.toUpperCase()))
             .then((data) => {
 
                 const randomTen = data
@@ -40,11 +39,13 @@ function PokemonDropdown({ onSelect, reset }) {
         }}>
             <option value="" disabled>Select Pokemon</option>
 
-            {randomOptions.map((name) => (
-                <option key={name} value={name}>
-                    {name}
-                </option>
-            ))}
+            {randomOptions.map((name) => {
+                return (
+                    <option key={name} value={name}>
+                        {name}
+                    </option>
+                )
+            })}
         </select>
 
 

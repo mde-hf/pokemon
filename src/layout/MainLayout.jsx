@@ -10,6 +10,7 @@ function MainLayout() {
         <>
             <Header />
             <Outlet />
+
         </>
     )
 }

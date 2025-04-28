@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext, } from "react";
+import React from "react";
 import { BattleContext } from "../context/BattleContext";
 import getPokemon from "../api/pokemonApi";
 import PokemonDropdown from "../components/PokemonDropdown";
