@@ -10,6 +10,7 @@ function Header() {
                 <Link to="/" className="hover:underline">Home</Link>
                 <Link to="/battle" className="hover:underline">Battle</Link>
                 <Link to="/about" className="hover:underline">About</Link>
+                <Link to="/detail" className="hover:underline">Details</Link>
             </div>
         </div>
 
