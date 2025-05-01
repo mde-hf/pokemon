@@ -4,14 +4,16 @@ import PokemonCard from "../components/PokemonCard";
 
 
 
-
 function About() {
 
     const [thirtyPokemon, setThirtyPokemon] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [shouldFetch, setShouldFetch] = useState(false)
 
 
     useEffect(() => {
+        if (!shouldFetch) return;
+
         const fetchBulkPokemons = async () => {
 
             setIsLoading(true);
@@ -25,17 +27,21 @@ function About() {
 
             setThirtyPokemon(pokemonList);
             setIsLoading(false);
+            setShouldFetch(false);
+
         }
         fetchBulkPokemons();
 
-
-    }, [])
-
+    }, [shouldFetch])
 
 
 
     return (
         <div>
+
+
+            <button onClick={() => setShouldFetch(true)}> Click to fetch pokemon </button>
+
             {isLoading ? (
                 <h1>Loading is in progress</h1>
             ) : (
