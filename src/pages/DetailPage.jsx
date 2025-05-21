@@ -20,13 +20,39 @@ function DetailPage() {
         }
     }
 
-    function handleCheckboxChange(e) {
-        const { name, checked } = e.target;
 
-        setSelectDetails(prev => ({
-            ...prev,
-            [name]: checked
-        }));
+
+    function handleCheckboxChange(e) {
+        // Which checkbox was clicked?
+        const checkboxName = e.target.name;
+
+        // Is it now checked or unchecked?
+        const isChecked = e.target.checked;
+
+        // If the "abilities" checkbox was clicked
+        if (checkboxName === "abilities") {
+            setSelectDetails({
+                abilities: isChecked,
+                weight: selectDetails.weight,
+                moves: selectDetails.moves
+            });
+        }
+        // If the "weight" checkbox was clicked
+        else if (checkboxName === "weight") {
+            setSelectDetails({
+                abilities: selectDetails.abilities,
+                weight: isChecked,
+                moves: selectDetails.moves
+            });
+        }
+        // If the "moves" checkbox was clicked
+        else if (checkboxName === "moves") {
+            setSelectDetails({
+                abilities: selectDetails.abilities,
+                weight: selectDetails.weight,
+                moves: isChecked
+            });
+        }
     }
 
     const getRandomPokemon = () => { }
